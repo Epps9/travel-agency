@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 class OrderSummary extends React.Component {
   static propTypes = {
     costOfTrip: PropTypes.node,
-    options: PropTypes.node,
+    options: PropTypes.object,
   }
   render () {
     return (
