@@ -19,7 +19,6 @@ class TripListOptions extends React.Component {
     // TODO - use action dispatcher from props
     this.props.changeDuration(value);
     console.log ('co to jest this', this.props);
-
   }
 
   handleSearch(phrase){
@@ -27,6 +26,8 @@ class TripListOptions extends React.Component {
   }
 
   render(){
+    console.log ('co to jest this', this.props);
+
     const {tags, filters} = this.props;
     return (
       <div className={styles.component}>
