@@ -54,7 +54,7 @@ const mockPropsForType = {
 };
   
 const testValue = mockProps.values[1].id;
-//const testValueNumber = 3;
+const testValueNumber = 3;
   
   
 for(let type in optionTypes){
@@ -137,6 +137,19 @@ for(let type in optionTypes){
           renderedSubcomponent.find(`input[value="${testValue}"]`).simulate('change', {currentTarget: {checked: true}});
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id] : [mockProps.currentValue, testValue]});
+        });
+        break;
+      }
+      case 'number': {
+        it('contain input type="number"', () => {
+          const input = renderedSubcomponent.find('input[type="number"]');
+          expect(input.length).toBe(1);
+        });
+
+        it('should run setOrderOption function on change', () => {
+          renderedSubcomponent.find('input').simulate('change', {currentTarget: {value: testValueNumber}});
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id] : testValueNumber });
         });
         break;
       }
