@@ -21,23 +21,27 @@ const sendOrder = (options, tripCost, tripDetails) => {
     ...tripDetails,
   };
 
-  const url = settings.db.url + '/' + settings.db.endpoint.orders;
+  if (payload.contact != '' && payload.name != '' && payload['start-date'] != '') {
+    const url = settings.db.url + '/' + settings.db.endpoint.orders;
 
-  const fetchOptions = {
-    cache: 'no-cache',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  };
+    const fetchOptions = {
+      cache: 'no-cache',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
 
-  fetch(url, fetchOptions)
-    .then(function(response){
-      return response.json();
-    }).then(function(parsedResponse){
-      console.log('parsedResponse', parsedResponse);
-    });
+    fetch(url, fetchOptions)
+      .then(function(response){
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+      });
+  } else {
+    alert('Required: Name, Contact and Date');
+  }
 };
 
 const OrderForm = ({tripCost, options, setOrderOption, tripDetails}) => (
