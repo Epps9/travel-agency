@@ -29,7 +29,7 @@ describe ('Component Summary', () => {
     expect(component.find('.title').text()).toEqual(expectedName);
     expect(component.find('.details').text()).toEqual(`${expectedDays} daysfrom ${expectedCost}`);
   });
-  it('trhwo an error without correct props', ()=> {
+  it('throw an error without correct props', ()=> {
     expect(() => shallow(<TripSummary />)).toThrow();
   });	 
   it('renders tags in spans in the correct order', ()=> {
